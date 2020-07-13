@@ -16,9 +16,14 @@ const About = (props) => {
   useEffect(() => {
     const { statusCode } = props;
     if (statusCode) {
+      console.log(statusCode);
       return <Error statusCode={statusCode} />;
     }
   }, [statusCode]);
+
+  useEffect(() => {
+    console.log(statusCode);
+  }, []);
 
   const { user, statusCode } = props;
   return (
