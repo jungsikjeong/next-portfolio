@@ -2,26 +2,25 @@ import React, { Component, useEffect, useState } from "react";
 import Link from "next/link";
 import fetch from "isomorphic-unfetch";
 import Layout from "../components/Layout";
+import Error from "./_error";
 
 const About = (props) => {
   About.getInitialProps = async () => {
     const res = await fetch("https://api.github.com/users/jungsikjeong");
+    const statusCode = res.status > 200 ? res.status : false;
     const data = await res.json();
 
-    return { user: data };
+    return { user: data, statusCode };
   };
 
-  // useEffect(() => {
-  // fetch("https://api.github.com/users/reedbarger")
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     setUser({
-  //       user: data,
-  //     });
-  //   });
-  // }, []);
+  useEffect(() => {
+    const { statusCode } = props;
+    if (statusCode) {
+      return <Error statusCode={statusCode} />;
+    }
+  }, [statusCode]);
 
-  const { user } = props;
+  const { user, statusCode } = props;
   return (
     <Layout title="About">
       <p>{user.name}</p>
