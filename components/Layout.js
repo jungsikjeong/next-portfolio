@@ -22,10 +22,6 @@ const Layout = ({ children, title }) => {
     <div className="root">
       <Head>
         <title>NextPortfolio</title>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css"
-        />
       </Head>
       <header>
         <Link href="/">
