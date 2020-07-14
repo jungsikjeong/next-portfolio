@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "export": "next export"
+    "export": "next export",
+    "now-build": "next build"
   },
   "author": "",
   "license": "ISC",
