@@ -7,7 +7,8 @@
     "dev": "next",
     "build": "next build",
     "export": "next export",
-    "vercel-deploy": "next build && next export"
+    "deploy": "cd out && now --public",
+    "now-build": "next build && next export -o dist"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "next": "^7.0.3",
     "nprogress": "^0.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "vercel": "^19.1.2"
   }
 }
