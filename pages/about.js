@@ -4,7 +4,7 @@ import fetch from "isomorphic-unfetch";
 import Layout from "../components/Layout";
 import Error from "./_error";
 
-const About = (props) => {
+const About = ({ user, statusCode }) => {
   About.getInitialProps = async () => {
     const res = await fetch("https://api.github.com/users/jungsikjeong");
     const statusCode = res.status > 200 ? res.status : false;
@@ -13,19 +13,18 @@ const About = (props) => {
     return { user: data, statusCode };
   };
 
-  useEffect(() => {
-    const { statusCode } = props;
-    if (statusCode) {
-      console.log(statusCode);
-      return <Error statusCode={statusCode} />;
-    }
-  }, [statusCode]);
+  // useEffect(()=> {
+  //   if (statusCode) {
+  //     console.log(statusCode);
+  //     return <Error statusCode={statusCode} />;
+  //   }
+  // },[statusCode])
 
-  useEffect(() => {
+  if (statusCode) {
     console.log(statusCode);
-  }, []);
+    return <Error statusCode={statusCode} />;
+  }
 
-  const { user, statusCode } = props;
   return (
     <Layout title="About">
       <p>{user.name}</p>
