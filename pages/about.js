@@ -13,17 +13,17 @@ const About = ({ user, statusCode }) => {
     return { user: data, statusCode };
   };
 
-  // useEffect(()=> {
-  //   if (statusCode) {
-  //     console.log(statusCode);
-  //     return <Error statusCode={statusCode} />;
-  //   }
-  // },[statusCode])
+  useEffect(() => {
+    if (statusCode) {
+      console.log(statusCode);
+      return <Error statusCode={statusCode} />;
+    }
+  }, [statusCode]);
 
-  if (statusCode) {
-    console.log(statusCode);
-    return <Error statusCode={statusCode} />;
-  }
+  // if (statusCode) {
+  //   console.log(statusCode);
+  //   return <Error statusCode={statusCode} />;
+  // }
 
   return (
     <Layout title="About">
